@@ -1,0 +1,12 @@
+/.idea
+/GTLabs.Identity.Users.sln.DotSettings.user
+/GTLabs.Identity.Users.Domain/obj
+/GTLabs.Identity.Users.Domain/bin
+
+/GTLabs.Identity.Users.Host/obj
+/GTLabs.Identity.Users.Host/bin
+/GTLabs.Identity.Users.Host/.idea
+
+/GTLabs.Identity.Users.Infrastructure/obj
+/GTLabs.Identity.Users.Infrastructure/bin
+/ExternalDeps
