@@ -1,6 +1,6 @@
-﻿using Gtlabs.Api.AmbientData;
+﻿using ExternalDeps.Core.Enums;
+using Gtlabs.Api.AmbientData;
 using GTLabs.Identity.Users.Domain.Users.Models;
-using GTLabs.Identity.Users.Host.Consts;
 using GTLabs.Identity.Users.Host.Users.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +17,14 @@ public class UsersController : ControllerBase
         _userService = userService;
         _ambientData = ambientData;
     }
+    
+    [HttpGet]
+    [Route("")]
+    public async Task<IActionResult> GetAll()
+    {
+        var searchResult = await _userService.GetAll();
+        return Ok(searchResult);
+    }
 
     [HttpGet]
     [Route("me")]
@@ -31,10 +39,10 @@ public class UsersController : ControllerBase
     }
     
     [HttpGet]
-    [Route("{userId:guid}")]
-    public async Task<IActionResult> GetById([FromRoute] Guid userId)
+    [Route("{userID:guid}")]
+    public async Task<IActionResult> GetById([FromRoute] Guid userID)
     {
-        var searchResult = await _userService.GetUserById(userId);
+        var searchResult = await _userService.GetUserById(userID);
         if (!searchResult.Found)
             return NotFound();
 
@@ -45,6 +53,10 @@ public class UsersController : ControllerBase
     [Route("")]
     public async Task<IActionResult> Create([FromBody] UserCreation userCreation)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
         var entityChangeResult = await _userService.Create(userCreation);
         if (!entityChangeResult.Success)
         {
@@ -54,6 +66,8 @@ public class UsersController : ControllerBase
                     return Conflict();
                 case EntityAlterationError.NotFound:
                     return NotFound();
+                case EntityAlterationError.ValidationError:
+                    return BadRequest(entityChangeResult);
             }
         }
 
@@ -71,6 +85,8 @@ public class UsersController : ControllerBase
             {
                 case EntityAlterationError.Conflict:
                     return Conflict();
+                case EntityAlterationError.ValidationError:
+                    return BadRequest(entityChangeResult);
             }
         }
         return Ok(entityChangeResult.Entity);

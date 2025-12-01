@@ -1,3 +1,4 @@
+using Gtlabs.Api.AmbientData;
 using Gtlabs.Api.Extensions;
 using Gtlabs.AppRegistration.Extensions;
 using Gtlabs.Consul.Extensions;
@@ -10,14 +11,15 @@ using Gtlabs.ServiceBus.ServiceBus.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.RegisterApp("GTLabs.Identity.Users");
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddAmbientData();
 builder.Services.RegisterAllDependencies();
 await builder.Configuration.AddConsulConfigurationAsync();
 builder.Services.AddConsulRegistration(builder.Configuration);
 builder.ConfigureKestrelWithNetworkHelper();
 builder.Services.RegisterServiceBus(builder.Configuration);
-builder.Services.AddRedisCache();
+builder.Services.AddRedisCache(builder.Configuration);
 
-builder.Services.AddHttpContextAccessor();
 builder.Services.AddPersistence<IdentityDbContext>(builder.Configuration);
 
 builder.Services.AddControllers();

@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Gtlabs.Api" Version="1.0.14" />
-        <PackageReference Include="Gtlabs.AppRegistration" Version="1.0.14" />
-        <PackageReference Include="Gtlabs.Consul" Version="1.0.14" />
-        <PackageReference Include="Gtlabs.DependencyInjections" Version="1.0.14" />
-        <PackageReference Include="Gtlabs.Redis" Version="1.0.14" />
-        <PackageReference Include="Gtlabs.ServiceBus" Version="1.0.14" />
+        <PackageReference Include="Gtlabs.Api" Version="1.0.21" />
+        <PackageReference Include="Gtlabs.AppRegistration" Version="1.0.21" />
+        <PackageReference Include="Gtlabs.Consul" Version="1.0.21" />
+        <PackageReference Include="Gtlabs.DependencyInjections" Version="1.0.21" />
+        <PackageReference Include="Gtlabs.Redis" Version="1.0.21" />
+        <PackageReference Include="Gtlabs.ServiceBus" Version="1.0.21" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.10">

@@ -1,6 +1,6 @@
-﻿using GTLabs.Identity.Users.Domain.Users.Entities;
+﻿using ExternalDeps.Core.Dtos;
+using GTLabs.Identity.Users.Domain.Users.Entities;
 using GTLabs.Identity.Users.Domain.Users.Models;
-using GTLabs.Identity.Users.Host.Dtos;
 using Gtlabs.Persistence.Repository;
 
 namespace GTLabs.Identity.Users.Host.Users.Services;
@@ -8,9 +8,10 @@ namespace GTLabs.Identity.Users.Host.Users.Services;
 public interface IUserService
 {
     Task<EntitySearchResult<User>> GetUserById(Guid userId);
+    Task<PagedEntityListSearchResult<UserOutput>> GetAll();
     Task<EntitySearchResult<User>> GetUserByName(string username);
-    Task<EntityAlterationResult<User>> Create(UserCreation userCreation);
-    Task<EntityAlterationResult<User>> Delete(Guid userId);
-    Task<EntityAlterationResult<User>> Update(Guid userId, UserUpdate userUpdate);
+    Task<EntityAlterationResult<UserOutput>> Create(UserCreation userCreation);
+    Task<EntityAlterationResult<UserOutput>> Delete(Guid userId);
+    Task<EntityAlterationResult<UserOutput>> Update(Guid userId, UserUpdate userUpdate);
 
 }

@@ -39,4 +39,26 @@ public class User : AuditedEntity, IUser
             IsActive = IsActive,
         };
     }
+    
+    public UserOutput ToOutput()
+    {
+        return new UserOutput()
+        {
+            Id = Id,
+            Name = Name,
+            IsActive = IsActive,
+            CreationTime = CreationTime,
+            LastModificationTime = LastModificationTime,
+            CreatorId = CreatorId,
+            ModifierId = ModifierId,
+        };
+    }
+
+    public UserForValidation ForValidation()
+    {
+        return new UserForValidation()
+        {
+            Name = Name
+        };
+    }
 }
