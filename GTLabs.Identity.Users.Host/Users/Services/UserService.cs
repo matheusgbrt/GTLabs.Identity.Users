@@ -1,5 +1,5 @@
-﻿using ExternalDeps.Core.Dtos;
-using ExternalDeps.Core.Enums;
+﻿using Gtlabs.Core.Dtos;
+using Gtlabs.Core.Enums;
 using Gtlabs.DependencyInjections.DependencyInjectons.Interfaces;
 using GTLabs.Identity.Users.Domain.Users.Entities;
 using GTLabs.Identity.Users.Domain.Users.Models;

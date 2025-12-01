@@ -1,7 +1,6 @@
-﻿using ExternalDeps.Core.Dtos;
+﻿using Gtlabs.Core.Dtos;
 using GTLabs.Identity.Users.Domain.Users.Entities;
 using GTLabs.Identity.Users.Domain.Users.Models;
-using Gtlabs.Persistence.Repository;
 
 namespace GTLabs.Identity.Users.Host.Users.Services;
 

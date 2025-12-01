@@ -1,5 +1,5 @@
-﻿using ExternalDeps.Core.Dtos;
-using ExternalDeps.Core.Enums;
+﻿using Gtlabs.Core.Dtos;
+using Gtlabs.Core.Enums;
 using Gtlabs.Api.AmbientData;
 using GTLabs.Identity.Users.Domain.Users.Models;
 using GTLabs.Identity.Users.Host.Users.Services;

@@ -1,7 +1,6 @@
-﻿using ExternalDeps.Core.Hashing;
+﻿using Gtlabs.Core.Hashing;
 using GTLabs.Identity.Users.Domain.Users.Models;
 using Gtlabs.Persistence.Entities;
-using Microsoft.AspNetCore.Identity;
 
 namespace GTLabs.Identity.Users.Domain.Users.Entities;
 
