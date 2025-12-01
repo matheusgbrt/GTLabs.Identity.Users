@@ -5,6 +5,7 @@ using GTLabs.Identity.Users.Domain.Users.Entities;
 using GTLabs.Identity.Users.Domain.Users.Models;
 using GTLabs.Identity.Users.Domain.Users.Services;
 using GTLabs.Identity.Users.Domain.Users.Validators;
+using Gtlabs.Persistence.Extensions;
 using Gtlabs.Persistence.Repository;
 using Gtlabs.Redis.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -25,10 +26,10 @@ public class UserService : IUserService, ITransientDependency
     }
     
     
-    public async Task<PagedEntityListSearchResult<UserOutput>> GetAll()
+    public async Task<PagedEntityListSearchResult<UserOutput>> GetAll(PagedRequest pagedRequest)
     {
-        var users = await _userRepository.GetAllAsync();
-        var count = users.Count();
+        var users = await _userRepository.Query().Page(pagedRequest.Page,pagedRequest.PageSize).ToListAsync();
+        var count = await _userRepository.Query().CountAsync();
         return new PagedEntityListSearchResult<UserOutput>(){Entities = users.Select(users => users.ToOutput()), TotalCount = count};
     }
 

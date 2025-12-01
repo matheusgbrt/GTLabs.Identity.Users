@@ -1,4 +1,5 @@
-﻿using ExternalDeps.Core.Enums;
+﻿using ExternalDeps.Core.Dtos;
+using ExternalDeps.Core.Enums;
 using Gtlabs.Api.AmbientData;
 using GTLabs.Identity.Users.Domain.Users.Models;
 using GTLabs.Identity.Users.Host.Users.Services;
@@ -20,9 +21,9 @@ public class UsersController : ControllerBase
     
     [HttpGet]
     [Route("")]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] PagedRequest pagedRequest)
     {
-        var searchResult = await _userService.GetAll();
+        var searchResult = await _userService.GetAll(pagedRequest);
         return Ok(searchResult);
     }
 
