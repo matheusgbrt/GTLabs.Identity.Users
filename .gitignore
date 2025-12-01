@@ -9,4 +9,5 @@
 
 /GTLabs.Identity.Users.Infrastructure/obj
 /GTLabs.Identity.Users.Infrastructure/bin
-/ExternalDeps
+/ExternalDeps/bin
+/ExternalDeps/obj
